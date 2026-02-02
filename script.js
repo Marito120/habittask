@@ -1,7 +1,7 @@
 const input = document.getElementById("taskInput");
 const list = document.getElementById("taskList");
 
-/* cargar tareas al abrir */
+/* cargar tareas */
 loadTasks();
 
 /* añadir tarea */
@@ -47,7 +47,7 @@ function addTask(text, completed) {
   list.appendChild(li);
 }
 
-/* guardar en storage */
+/* guardar */
 function saveTasks() {
   const tasks = [];
   document.querySelectorAll("#taskList li").forEach(li => {
@@ -60,7 +60,7 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-/* cargar del storage */
+/* cargar */
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.forEach(task => addTask(task.text, task.completed));
