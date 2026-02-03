@@ -1,10 +1,8 @@
 const input = document.getElementById("taskInput");
 const list = document.getElementById("taskList");
 
-/* cargar tareas */
 loadTasks();
 
-/* añadir tarea */
 input.addEventListener("keypress", e => {
   if (e.key === "Enter" && input.value.trim() !== "") {
     addTask(input.value, false);
@@ -13,7 +11,6 @@ input.addEventListener("keypress", e => {
   }
 });
 
-/* crear tarea */
 function addTask(text, completed) {
   const li = document.createElement("li");
   if (completed) li.classList.add("completed");
@@ -47,7 +44,6 @@ function addTask(text, completed) {
   list.appendChild(li);
 }
 
-/* guardar */
 function saveTasks() {
   const tasks = [];
   document.querySelectorAll("#taskList li").forEach(li => {
@@ -56,12 +52,11 @@ function saveTasks() {
       completed: li.classList.contains("completed")
     });
   });
-
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-/* cargar */
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.forEach(task => addTask(task.text, task.completed));
 }
+
